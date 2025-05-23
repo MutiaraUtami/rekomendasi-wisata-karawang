@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rekomendasi Wisata Karawang</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>Cari Rekomendasi Wisata</h1>
+    <form action="/hasil" method="POST">
+        <label>Latitude:</label><br>
+        <input type="text" id="lat" name="lat" readonly><br><br>
+        <label>Longitude:</label><br>
+        <input type="text" id="lon" name="lon" readonly><br><br>
+        <input type="hidden" id="current_time" name="current_time">
+        <button type="submit">Cari</button>
+    </form>
+
+    {%include 'footer.html' %} 
+    <script>
+        // Minta izin lokasi ke browser
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                document.getElementById('lat').value = position.coords.latitude;
+                document.getElementById('lon').value = position.coords.longitude;
+            },
+            function (error) {
+                alert('Gagal mendeteksi lokasi. Gunakan default lokasi Karawang.');
+                document.getElementById('lat').value = -6.88344;
+                document.getElementById('lon').value = 103.3065;
+            }
+        );
+
+        const now = new Date();
+        const jamDecimal = now.getHours() + now.getMinutes() / 60;
+        document.getElementById('current_time').value = jamDecimal;
+    </script>
+</body>
+</html>

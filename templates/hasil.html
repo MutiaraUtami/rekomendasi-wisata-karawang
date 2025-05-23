@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasil Rekomendasi</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>Rekomendasi Wisata Terbaik</h1>
+
+    <div class="card-container">
+        {% for r in rekomendasi %}
+        <div class="card">
+            <h2>{{ r['Nama Tempat Wisata'] }}</h2>
+            <p><strong>Kecamatan:</strong> {{ r['Kecamatan'] }}</p>
+            <p><strong>Kategori:</strong> {{ r['Kategori'] }}</p>
+            <p><strong>Bintang:</strong> {{ r['Bintang'] }}</p>
+            <p><strong>Harga Tiket:</strong> {{ r['Harga Tiket'] }}</p>
+            <p><strong>Jam Buka:</strong> {{ r['Jam Buka'] }}</p>
+            <p><strong>Jam Tutup:</strong> {{ r['Jam Tutup'] }}</p>
+            <p><strong>Skor:</strong> {{ '%.2f'|format(r['Skor Fuzzy']) }}</p>
+        </div>
+        {% endfor %}
+    </div> 
+    {%include 'footer.html' %}  
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="welcome">
+        <h1>Selamat datang di KarawangGo!</h1>
+        <div class="desc">
+        <p>Temukan rekomendasi wisata terbaik di Karawang.</p>
+        <p>Silakan klik tombol di bawah untuk mulai mencari rekomendasi wisata.</p>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn-rekom">Cari Rekomendasi</a>
+        <hr>
+        <div class="card-container">
+        {% for item in wisata %}
+            <div class="card">
+            <h3>{{ item['Nama Tempat Wisata'] }}</h3>
+            <p>Kecamatan: {{ item['Kecamatan'] }}</p>
+            <p>Kategori: {{ item['Kategori'] }}</p>
+            <p>Bintang: {{ item['Bintang'] }}</p>
+            <p>Harga Tiket: {{ item['Harga Tiket'] }}</p>
+         </div>
+    {% endfor %}
+        </div>
+    <p>Jika Anda ingin memberikan masukan atau saran, silakan hubungi kami.</p>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
