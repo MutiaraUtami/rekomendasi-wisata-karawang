@@ -12,12 +12,10 @@ Sistem akan menghitung skor fuzzy untuk setiap tempat wisata berdasarkan:
 
 - 📍 Jarak dari lokasi pengguna
 
-- 🟢 Status buka pada waktu akses
-
 Output berupa daftar rekomendasi wisata yang diurutkan berdasarkan skor tertinggi.
 
 ## Algoritma Inti:
-Setiap kriteria (bintang, harga, jam, jarak, buka/tutup) difuzzifikasi menjadi nilai numerik.
+Setiap kriteria (bintang, harga, jam, jarak) difuzzifikasi menjadi nilai numerik.
 
 Jarak dihitung menggunakan rumus Haversine untuk mendapatkan jarak sejauh mungkin secara geografis.
 
